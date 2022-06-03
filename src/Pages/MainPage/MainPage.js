@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from '../../components/Header/Header'
+import Navbar from '../../components/Navbar/Navbar'
 
 const MainPage = () => {
     return (
         <div>
-            메인페이지
+            <Header/>
+            <Navbar/>
         </div>
     );
 };
