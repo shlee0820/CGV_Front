@@ -1,0 +1,48 @@
+.header-box {
+    width : 60%;
+    margin: 30px auto;
+    display: flex;
+    max-width: 600px;
+    min-width: 400px;
+}
+
+.header-box .btn-group-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-box .btn-group-box .btn-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-box .btn-group-box .btn-box .btn-text {
+    font-size: 0.3em; 
+    text-align: center;  
+}
+
+#hidden-btn {
+    width: 50px;
+    margin-left: 20px;
+}
+
+@media (max-width: 400px) {
+    #logo {
+        display: none;
+    }
+
+    .btn-img {
+        display: none;
+    }
+
+    .btn-text {
+        display: none;
+    }
+}
+
+@media (min-width: 400px) {
+    #hidden-btn {
+        display: none;
+    }
+}
