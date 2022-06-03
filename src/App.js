@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+// import react-router-dom
+import {BrowserRouter as Router, Routers, Route } from 'react-router-dom';
 
+// import pages
+import MainPage from './Pages/MainPage/MainPage';
+import LoginPage from './Pages/LoginPage/LoginPage';
+
+// 일단 페이지 2개만 파놓음 !
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={MainPage}/>
+        <Route path="/login" element={LoginPage}/>
+      </Routes>
+    </Router>
   );
 }
 
