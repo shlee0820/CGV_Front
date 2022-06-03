@@ -35,7 +35,6 @@ const Header = () => {
                     <span className='btn-text'>고객센터</span>
                 </div>
             </section>
-            
         </header>
     );
 };
