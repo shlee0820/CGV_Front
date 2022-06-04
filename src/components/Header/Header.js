@@ -19,19 +19,19 @@ const Header = () => {
             <img id='hidden-btn' src={hambergericon}/>
             <section className='btn-group-box'>
                 <div className='btn-box'>
-                    <Link to='/login'><img className='btn-img' style={{width: "50px"}} src={login}/></Link>
+                    <Link to='/login'><img className='btn-img' src={login}/></Link>
                     <span className='btn-text'>로그인</span>
                 </div>
                 <div className='btn-box'>
-                    <Link to='/join'><img className='btn-img' style={{width: "50px"}} src={join}/></Link>
+                    <Link to='/join'><img className='btn-img' src={join}/></Link>
                     <span className='btn-text'>회원가입</span>
                 </div>
                 <div className='btn-box'>
-                    <Link to='/my'><img className='btn-img' style={{width: "50px"}} src={mycgv}/></Link>
+                    <Link to='/my'><img className='btn-img' src={mycgv}/></Link>
                     <span className='btn-text'>MY CGV</span>
                 </div>
                 <div className='btn-box'>
-                    <Link to='/#'><img className='btn-img' style={{width: "50px"}} src={center}/></Link>
+                    <Link to='/#'><img className='btn-img' src={center}/></Link>
                     <span className='btn-text'>고객센터</span>
                 </div>
             </section>
