@@ -26,7 +26,7 @@
     margin-left: 20px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 768px) {
     #logo {
         display: none;
     }
@@ -40,7 +40,7 @@
     }
 }
 
-@media (min-width: 400px) {
+@media (min-width: 768px) {
     #hidden-btn {
         display: none;
     }

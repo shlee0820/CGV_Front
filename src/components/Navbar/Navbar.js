@@ -1,12 +1,14 @@
 import './Navbar.css';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Navbar() {
     return (
         <div className="navbar">
             <div className="navbar-box">
                 <div className="navbar-item-blank">
-                    <a href="" className="navItem">영화</a>
-                    <a href="" className="navItem">극장</a>
+                    <Link className="navItem" to='/movie'>영화</Link>
+                    <Link className="navItem" to='/theater'>극장</Link>
                 </div>
             </div>
         </div>
