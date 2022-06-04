@@ -1,0 +1,14 @@
+.main-movie-container {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.main-movie-container #main-movie-big-box {
+    background-color: #ffd4dd;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}

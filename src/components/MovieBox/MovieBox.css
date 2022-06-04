@@ -1,7 +1,7 @@
 .movie-box {
     background-color: #fcb4b4;
     width: 30%;
-    height: 250px;
+    height: 350px;
     margin: 1.5%;
     padding-bottom: 15px;
     text-align: center;
@@ -24,8 +24,8 @@
 }
 
 .movie-box .text {
-    font-size: 0.5em;
+    font-size: 0.8em;
     text-align: left;
-    margin-left: 10px;
-    padding: 2px;
+    margin-left: 15px;
+    padding: 5px;
 }
