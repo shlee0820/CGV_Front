@@ -1,5 +1,5 @@
 .movie-container {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
 }
 
@@ -7,7 +7,7 @@
     background-color: #ffd4dd;
     display: flex;
     flex-wrap: wrap;
-    max-width: 650px;
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 30px;
 }

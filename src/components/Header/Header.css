@@ -1,8 +1,7 @@
 .header-box {
-    width : 60%;
+    width : 70%;
     margin: 30px auto;
     display: flex;
-    max-width: 600px;
     min-width: 400px;
 }
 
