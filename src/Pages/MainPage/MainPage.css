@@ -81,8 +81,19 @@
     width: 400px;
 }
 
+.event-img-scale {
+    overflow: hidden;
+    border-radius: 5%;
+}
+
 .eventImg {
     width: 100%;
+    max-width: 100%;
+    transition-duration: 0.5s;
+}
+
+.eventImg:hover{
+    transform: scale(1.1);
 }
 
 .event-name {

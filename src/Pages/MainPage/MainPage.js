@@ -71,22 +71,22 @@ function MainPage() {
                     </i>
                     <section id='main-event-box'>
                         <div className="event default-view" id="e1">
-                            <img className='eventImg' src={event1}></img>
+                            <div className="event-img-scale"><img className='eventImg' src={event1}></img></div>
                             <p className="event-name">All-Dat 영스엑런칭 이벤트</p>
                             <p className="event-period">2022.06.03 ~ 2022.07.22</p>
                         </div>
                         <div className="event default-view" id="e2">
-                            <img className='eventImg' src={event2}></img>
+                            <div className="event-img-scale"><img className='eventImg' src={event2}></img></div>
                             <p className="event-name">[범죄도시2] 포토플레이 시크릿 컷</p>
                             <p className="event-period">2022.05.10 ~ 2022.06.05</p>
                         </div>
                         <div className="event default-view" id="e3">
-                            <img className='eventImg' src={event3}></img>
+                            <div className="event-img-scale"><img className='eventImg' src={event3}></img></div>
                             <p className="event-name">[브로커]CGV 필름마크</p>
                             <p className="event-period">2022.06.02 ~ 2022.06.26</p>
                         </div>
                         <div className="event default-none" id="e4">
-                            <img className='eventImg' src={event4}></img>
+                            <div className="event-img-scale"><img className='eventImg' src={event4}></img></div>
                             <p className="event-name">[쥬라기 월드: 도미니언]CGV 필름마크</p>
                             <p className="event-period">2022.05.25 ~ 2022.06.19</p>
                         </div>
