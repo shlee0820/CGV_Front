@@ -3,11 +3,11 @@ import Header from '../../components/Header/Header'
 import Navbar from '../../components/Navbar/Navbar'
 import MainMovieBox from '../../components/MainMovieBox/MainMovieBox'
 import './MainPage.css';
+import event1 from './EventImg/event1.jpg'
+import event2 from './EventImg/event2.jpg'
+import event3 from './EventImg/event3.jpg'
+import event4 from './EventImg/event4.jpg'
 
-// 그냥 이벤트 레이아웃 맞추기 위해 예비로 써 둔것.
-import first from './MainPageImg/1.jpg';
-import two from './MainPageImg/7.jpg';
-import three from './MainPageImg/4.jpg';
 
 function MainPage() {
     // useRef로 슬라이드 도전 해보는 중 근데 잘 안됨...
@@ -47,15 +47,15 @@ function MainPage() {
                     <i class="left-btn" /*onClick={onClick}*/>
                         ⇦
                     </i>
-                    <section id='main-movie-big-box'>
-                        <MainMovieBox no="1"/>
-                        <MainMovieBox no="2"/>
-                        <MainMovieBox no="3"/>
-                        <MainMovieBox no="4"/>
-                        {/* <MainMovieBox no="5"/>
-                        <MainMovieBox no="6"/>
-                        <MainMovieBox no="7"/>
-                        <MainMovieBox no="8"/> */}
+                    <section id='main-movie-box'>
+                        <div className="default-view" id='m1'><MainMovieBox no="1"/></div>
+                        <div className="default-view" id='m2'><MainMovieBox no="2"/></div>
+                        <div className="default-view" id='m3'><MainMovieBox no="3"/></div>
+                        <div className="default-view" id='m4'><MainMovieBox no="4"/></div>
+                        <div className="default-none" id='m5'><MainMovieBox no="5"/></div>
+                        <div className="default-none" id='m6'><MainMovieBox no="6"/></div>
+                        <div className="default-none" id='m7'><MainMovieBox no="7"/></div>
+                        <div className="default-none" id='m8'><MainMovieBox no="8"/></div>
                     </section>
                     <i class="right-btn" /*onClick={onClick}*/>
                         ⇨
@@ -64,15 +64,32 @@ function MainPage() {
             </div>
 
             <div className="main-event">
-                <h3>EVENT</h3>
+                <h2>EVENT</h2>
                 <section className='main-event-container'>
                     <i class="left-btn" /*onClick={onClick}*/>
                         ⇦
                     </i>
-                    <section id='main-event-big-box'>
-                        <p>MovieBox처럼 이벤트박스 만들어야 함</p>
-                        <p>MovieBox처럼 이벤트박스 만들어야 함</p>
-                        <p>MovieBox처럼 이벤트박스 만들어야 함</p>
+                    <section id='main-event-box'>
+                        <div className="event default-view" id="e1">
+                            <div className="event-img-scale"><img className='eventImg' src={event1}></img></div>
+                            <p className="event-name">All-Dat 영스엑런칭 이벤트</p>
+                            <p className="event-period">2022.06.03 ~ 2022.07.22</p>
+                        </div>
+                        <div className="event default-view" id="e2">
+                            <div className="event-img-scale"><img className='eventImg' src={event2}></img></div>
+                            <p className="event-name">[범죄도시2] 포토플레이 시크릿 컷</p>
+                            <p className="event-period">2022.05.10 ~ 2022.06.05</p>
+                        </div>
+                        <div className="event default-view" id="e3">
+                            <div className="event-img-scale"><img className='eventImg' src={event3}></img></div>
+                            <p className="event-name">[브로커]CGV 필름마크</p>
+                            <p className="event-period">2022.06.02 ~ 2022.06.26</p>
+                        </div>
+                        <div className="event default-none" id="e4">
+                            <div className="event-img-scale"><img className='eventImg' src={event4}></img></div>
+                            <p className="event-name">[쥬라기 월드: 도미니언]CGV 필름마크</p>
+                            <p className="event-period">2022.05.25 ~ 2022.06.19</p>
+                        </div>
                     </section>
                     <i class="right-btn" /*onClick={onClick}*/>
                         ⇨

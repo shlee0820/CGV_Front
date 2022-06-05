@@ -7,7 +7,7 @@ const MovieBox = (props) => {
     // 이미지 클릭 시 상세페이지 이동 구현하기
 
     return (
-        <div className='main-movie-box' id={props.no}>
+        <div className='main-movie-box'>
             <div id='main-no-box'>No.{props.no}</div>
             <div id='main-movie-img'>영화 이미지</div>
             <div className='main-text'>영화 제목</div>
