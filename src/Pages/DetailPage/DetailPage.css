@@ -1,0 +1,55 @@
+#detail-top-box {
+    display: flex;
+    width: 70%;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+}
+
+.detail-btn {
+    font-size: 0.8em;
+    color: white;
+    background-color : #FB4359;
+    border : 1px solid #FB4359;
+    border-radius: 5px;
+}
+
+#detail-ticket-btn {
+    width: 100px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+#detail-rank-btn {
+    width: 41%;
+    height: 50px;
+    margin: 2%;
+}
+
+#detail-my-rank-btn {
+    width: 41%;
+    height: 50px;
+    margin: 2%;
+    background-color: #666666;
+    border : 1px solid #666666;
+}
+
+#detail-review {
+    width: 70%;
+    height: 130px;
+    margin: 0 auto 50px;
+    background-color: #F6F6F6;
+    display: flex;
+    align-items: center;
+}
+
+#review-text-box {
+    margin: 0 5%;
+    width: 70%;
+}
+
+#review-btn-box {
+    margin: 0 5%;
+    width: 30%;
+}
