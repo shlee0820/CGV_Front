@@ -16,11 +16,20 @@
     margin: 20px;
 }
 
-.default-view {
+.default-movie-view {
     display: block;
 }
 
-.default-none {
+.default-movie-none {
+    display: none;
+}
+
+.default-event-view {
+    display: block;
+    width: 400px;
+}
+
+.default-event-none {
     display: none;
 }
 
@@ -78,7 +87,7 @@
 }
 
 .event {
-    width: 400px;
+    width: 100%
 }
 
 .event-img-scale {
@@ -112,11 +121,11 @@
     }
 
     .main-event-container #main-event-box {
-        flex-wrap: wrap;
         min-width: 427px;
+        flex-wrap: wrap;
     }
 
-    .event {
+    .default-view {
         width: 48%;
     }
 }
