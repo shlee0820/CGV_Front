@@ -4,7 +4,7 @@
 }
 
 .movie-container #movie-big-box {
-    background-color: #ffd4dd;
+    /* background-color: #ffd4dd; */
     display: flex;
     flex-wrap: wrap;
     width: 100%;

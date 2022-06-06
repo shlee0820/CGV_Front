@@ -4,6 +4,9 @@ import MovieBox from '../MovieBox/MovieBox';
 
 // 무비 차트 부분
 const Movie = () => {
+
+    // get으로 영화 전체 받아오기
+
     return (
         <section className='movie-container'>
             <h3>무비차트</h3>
@@ -15,6 +18,7 @@ const Movie = () => {
                 </select>
             </section>
             <section id='movie-big-box'>
+                {/* map 함수 써서 영화 개수만큼 돌리기, 인자는 영화 하나의 정보 */}
                 <MovieBox no="1"/>
                 <MovieBox no="2"/>
                 <MovieBox no="3"/>
