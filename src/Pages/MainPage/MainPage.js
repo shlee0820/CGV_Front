@@ -57,7 +57,19 @@ function MainPage() {
             }
         }, 3000)
         // }
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        // while(true) {
+            setTimeout(() => {
+            if (eventViewNum > 1) {
+                setEventViewNum(eventViewNum - 1);
+            } else if (eventViewNum < 2) {
+                setEventViewNum(eventViewNum + 1);
+            }
+        }, 3000)
+        // }
+    }, [eventViewNum]);
 
     return (
         <div>
