@@ -125,7 +125,11 @@
         flex-wrap: wrap;
     }
 
-    .default-view {
+    .default-event-view {
         width: 48%;
+    }
+
+    .default-event-view:nth-child(3) {
+        display: none;
     }
 }
