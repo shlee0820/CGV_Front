@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import MoviePage from './pages/MoviePage/MoviePage';
 import DetailPage from './pages/DetailPage/DetailPage';
+import TheaterPage from './pages/TheaterPage/TheaterPage';
 
 // 페이지 추가할때마다 route태그 추가하기 !
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/join" element={<RegisterPage/>}/>
                 <Route path="/movie" element={<MoviePage/>}/>
                 <Route path="/detail" element={<DetailPage/>}/>
+                <Route path="/theater" element={<TheaterPage />}/>
             </Routes>
         </Router>
     );

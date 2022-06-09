@@ -48,7 +48,6 @@ function MainPage() {
     }
 
     useEffect(() => {
-        // while(true) {
             setTimeout(() => {
             if (eventViewNum > 1) {
                 setEventViewNum(eventViewNum - 1);
@@ -56,11 +55,9 @@ function MainPage() {
                 setEventViewNum(eventViewNum + 1);
             }
         }, 3000)
-        // }
     }, []);
 
     useEffect(() => {
-        // while(true) {
             setTimeout(() => {
             if (eventViewNum > 1) {
                 setEventViewNum(eventViewNum - 1);
@@ -68,7 +65,6 @@ function MainPage() {
                 setEventViewNum(eventViewNum + 1);
             }
         }, 3000)
-        // }
     }, [eventViewNum]);
 
     return (
@@ -78,10 +74,11 @@ function MainPage() {
 
             <div className='main-movie-list'>
                 <section className='main-movie-container'>
-                    <button className="left-btn" onClick={onMovieLeftClick}>
+                    <i className="left-btn" onClick={onMovieLeftClick}>
                         ⇦
-                    </button>
+                    </i>
                     <section id='main-movie-box'>
+                        {/* 화면 줄어들 때 영화 박스가 페이지 너비에 따라 같이 줄어들게 만들기 */}
                         <div className={(movieViewNum <= movie1id && movie1id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie1id}><MainMovieBox no='1'/></div>
                         <div className={(movieViewNum <= movie2id && movie2id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie2id}><MainMovieBox no="2"/></div>
                         <div className={(movieViewNum <= movie3id && movie3id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie3id}><MainMovieBox no="3"/></div>
@@ -91,18 +88,18 @@ function MainPage() {
                         <div className={(movieViewNum <= movie7id && movie7id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie7id}><MainMovieBox no="7"/></div>
                         <div className={(movieViewNum <= movie8id && movie8id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie8id}><MainMovieBox no="8"/></div>
                     </section>
-                    <button className="right-btn" onClick={onMovieRightClick}>
+                    <i className="right-btn" onClick={onMovieRightClick}>
                         ⇨
-                    </button>
+                    </i>
                 </section>
             </div>
 
             <div className="main-event">
                 <h2>EVENT</h2>
                 <section className='main-event-container'>
-                    <button className="left-btn" onClick={onEventLeftClick}>
+                    <i className="left-btn" onClick={onEventLeftClick}>
                         ⇦
-                    </button>
+                    </i>
                     <section id='main-event-box'>
                         <div className={(eventViewNum <= event1id && event1id <=  eventViewNum+2) ? "default-event-view" : "default-event-none"} id={event1id}>
                             <div className='event'>
@@ -133,9 +130,9 @@ function MainPage() {
                             </div>
                         </div>
                     </section>
-                    <button className="right-btn" onClick={onEventRightClick}>
+                    <i className="right-btn" onClick={onEventRightClick}>
                         ⇨
-                    </button>
+                    </i>
                 </section>
             </div>
 
