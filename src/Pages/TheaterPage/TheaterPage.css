@@ -1,0 +1,58 @@
+.theater {
+    width: 70%;
+    margin: 70px auto;
+}
+
+.movieA {
+    height: 250px;
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+}
+
+.movieB {
+    height: 250px;
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+}
+
+.box{
+    width: 90%;
+    margin: 30px auto;
+}
+
+#name{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+#detail{
+    font-size: 1rem;
+    color: #D3D3D3;
+}
+
+#show{
+    text-align: center;
+    border: 1px solid skyblue;
+    color: #6495ED;
+}
+
+.time_seat{
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.info{
+    margin-bottom: 20px;
+}
+
+.starttimebtn{  
+    display: flex;
+    margin-top: 20px;
+}
+
+.am, .pm {
+    width: 100px;
+    height: 60px;
+    text-align: center;
+    border: 1px solid black;
+}
