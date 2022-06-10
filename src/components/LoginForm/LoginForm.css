@@ -10,22 +10,27 @@
     border-bottom: 2px solid #898987;
 }
 
-#login-input {
+#input-box {
     width: 50%;
+}
+
+#input-box > input {
+    width: 97%;
     height: 30px;
     margin: 2px;
     border: 2px solid #898987;
 }
 
-#login-btn {
-    width: 50%;
+#input-box > button {
+    width: 100%;
     height: 36px;
     margin: 2px;
     background-color: #FB4357;
     border: 1px solid #FB4357;
 }
 
-#login-btn > div {
+#login-btn > span {
+    display:inline-block;
     width: 100%;
     height: 30px;
     line-height: 30px;

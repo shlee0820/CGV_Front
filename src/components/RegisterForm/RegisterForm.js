@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './RegisterForm.css';
 
+import axios from 'axios';
+
 const RegisterForm = () => {
 
     const [name, setName] = useState("");
@@ -28,17 +30,31 @@ const RegisterForm = () => {
     const onPhoneHandler = (e) => {
         setPhone(e.currentTarget.value);
     }    
+
+    const onClickRegister = () => {
+
+        const body = {
+            name : name,
+            birth : birth,
+            phone : phone,
+            id : id,
+            password : pw
+        }
+
+        axios.post("/user/join", body)
+        .then(console.log);
+    }
     
 
     return (
         <section className='register-form-box'>
             <div style={{margin: "10px"}}>회원정보를 입력하신 후, 회원가입 버튼을 클릭해 주세요.</div>
-            <input id='register-input' type="text" value={name} placeholder='  name' onClick={onNameHandler} />
-            <input id='register-input' type="text" value={id} placeholder='  id' onClick={onIdHandler} />
-            <input id='register-input' type="password" value={pw} placeholder='  pw' onClick={onPwHandler} />
-            <input id='register-input' type="text" value={birth} placeholder='  birth' onClick={onBirthHandler} />
-            <input id='register-input' type="text" value={phone} placeholder='  phone' onClick={onPhoneHandler} />
-            <button id='register-btn'><div>회원가입</div></button>
+            <input className='register-input' type="text" value={name} placeholder='  name' onChange={onNameHandler} />
+            <input className='register-input' type="text" value={id} placeholder='  id' onChange={onIdHandler} />
+            <input className='register-input' type="password" value={pw} placeholder='  pw' onChange={onPwHandler} />
+            <input className='register-input' type="text" value={birth} placeholder='  birth (ex) 000204)' onChange={onBirthHandler} />
+            <input className='register-input' type="text" value={phone} placeholder='  phone (ex) 01012341234)' onChange={onPhoneHandler} />
+            <button id='register-btn' onClick={onClickRegister}><div>회원가입</div></button>
         </section>
     );
 };
