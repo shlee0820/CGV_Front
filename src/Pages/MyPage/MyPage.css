@@ -1,0 +1,61 @@
+#my-container {
+    width: 70%;
+    margin: 0 auto;
+    background-color: #F8F8F8;
+}
+
+#my-box {
+    width: 80%;
+    height: 150px;
+    margin: 0 auto;
+    padding-top: 7%;
+}
+
+#my-box > h2 {
+    display: inline;
+}
+
+#my-ticket-container {
+    width: 70%;
+    margin: 10% auto;
+}
+
+#my-ticket-container > h3 {
+    display: inline;
+}
+
+#my-ticket-container > span {
+    float: right;
+    font-size: 0.8em;
+    line-height: 27px;
+}
+
+#my-ticket-info {
+    border: 1px solid rgb(92, 92, 92);
+    height: 70px;
+    margin-top: 15px;
+    text-align: center;
+    line-height: 70px;
+}
+
+#my-ticket-cancel-container {
+    width: 70%;
+    margin: 10% auto;
+}
+
+#my-ticket-cancel-container > h3 {
+    display: inline;
+}
+
+#my-ticket-cancel-container > span {
+    float: right;
+    font-size: 0.8em;
+    line-height: 27px;
+}
+
+@media (max-width : 630px) {
+    #my-ticket-container > span {
+        display: none;
+    }
+}
+
