@@ -2,9 +2,11 @@ import React, {useState} from 'react';
 import './RegisterForm.css';
 
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
 
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [birth, setBirth] = useState("");
     const [phone, setPhone] = useState("");
@@ -42,7 +44,12 @@ const RegisterForm = () => {
         }
 
         axios.post("/user/join", body)
-        .then(console.log);
+        .then(res => res.data)
+        .then(res => {
+            if (res.success) {
+                navigate("/login");
+            }
+        })
     }
     
 
