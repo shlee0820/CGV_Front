@@ -7,10 +7,7 @@ const MovieBox = (props) => {
     
     const navigate = useNavigate();
 
-    // 이미지 클릭 시 상세페이지 이동 구현하기(전달 인자는 영화 id)
     const onClick = (e) => {
-        // 상세페이지 이동  상세페이지에 id전달 
-        // navigate('/detail', {id:id})
         let temp = e.currentTarget.name;
         navigate('/detail', {
             state: {id: temp}
@@ -27,7 +24,7 @@ const MovieBox = (props) => {
             onClick={onClick}
             />
             <strong>{props.name}</strong>
-            <div className='text'>예매율 00% </div>
+            <div className='text'>예매율 00% &nbsp;&nbsp;평점 {props.avgPoint}</div>
             <div className='text'>{props.release} 개봉</div>
             <button id='ticket-btn'>예매하기</button>
         </div>

@@ -45,6 +45,7 @@ const Movie = () => {
                 name={arr[i].contents.name}
                 poster={arr[i].contents.poster}
                 release={arr[i].contents.release}
+                avgPoint={arr[i].scores.avgPoint}
                 />)
         }
         return movieArr;
