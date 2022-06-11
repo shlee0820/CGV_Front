@@ -10,6 +10,7 @@
     width: 100%;
     margin: 0 auto;
     margin-bottom: 30px;
+    min-width: 650px;
 }
 
 #select-box {

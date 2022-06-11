@@ -1,0 +1,37 @@
+#seat-container {
+    max-width: 70%;
+    min-width: 500px;
+    height: 300px;
+    background-color: #F2F0E5;
+    border: 2px solid #D3D4C9;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+#seat-container > :first-child {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background-color: black;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#seat-container > :nth-child(2) {
+    display: flex;
+}
+
+.seat-info-box {
+    width: 50%;
+    height: 100px;
+    text-align: center;
+}
+
+.seat-info-box:first-child {
+    border-right: 2px solid #D3D4C9 ;
+    border-bottom: 2px solid #D3D4C9 ;
+}
+
+.seat-info-box:last-child {
+    border-bottom: 2px solid #D3D4C9 ;
+}

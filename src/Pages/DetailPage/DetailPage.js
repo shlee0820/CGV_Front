@@ -1,13 +1,33 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './DetailPage.css';
 import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/Navbar';
 import RankInput from '../../components/RankInput/RankInput';
 
-const DetailPage = (props) => {
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 
-    // 현재 props는 영화 id 
+const DetailPage = () => {
+
+    const location = useLocation();
     // req : 영화 id, res : 상세 정보
+    const [movieInfo, setMovieInfo] = useState({});
+
+    useEffect(()=>{
+        let { id } = location.state;
+        axios.get(`/movie/detail-view?movie_id=${id}`)
+        .then(res => res.data)
+        .then(res => {
+            res = res.movie.contents;
+            setMovieInfo({"name": res.name, 
+            "poster": res.poster,
+            "director" : res.director, 
+            "actor" : res.actor, 
+            "genre" : res.genre, 
+            "release" : res.release
+            });
+        })
+    }, [])
 
 
     // 평점 작성 누르면 등록 기능 로직
@@ -30,14 +50,15 @@ const DetailPage = (props) => {
             {/* 영화 상세 파트 */}
             <section id='detail-top-box'>
                 <article style={{width: "30%"}}>
-                    <img src='' alt='이미지 없음' />
+                    <img src={movieInfo.poster} alt='이미지 없음'
+                    style={{width: "90%"}} />
                 </article>
                 <article style={{width: "70%"}}>
-                    <h3>영화 이름</h3>
+                    <h3>{movieInfo.name}</h3>
                     <div>예매율 : 00%</div><hr/>
-                    <div>감독 : 00 / 배우 : 00</div>
-                    <div>장르 : 00 / 기타 정보</div>
-                    <div>개봉 : 00.00.00</div>
+                    <div>감독 : {movieInfo.director} / 배우 : {movieInfo.actor}</div>
+                    <div>장르 : {movieInfo.genre} / 기타 정보</div>
+                    <div>개봉 : {movieInfo.release}</div>
                     <button id='detail-ticket-btn' className='detail-btn'>예매하기</button>
                 </article>
             </section>

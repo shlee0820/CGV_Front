@@ -30,7 +30,7 @@ const LoginForm = () => {
         axios.post("/user/login", body)
         .then(res => res.data)
         .then(res => {
-            if (res.success) {
+            if (res.isExist) {
                 navigate("/");
             }
         })

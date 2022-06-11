@@ -10,6 +10,7 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import MoviePage from './pages/MoviePage/MoviePage';
 import DetailPage from './pages/DetailPage/DetailPage';
 import TheaterPage from './pages/TheaterPage/TheaterPage';
+import SeatChoicePage from './pages/SeatChoicePage/SeatChoicePage'; // 추후 페이지말고 컴포넌트로 변경가능성
 import MyPage from './pages/MyPage/MyPage';
 
 // 페이지 추가할때마다 route태그 추가하기 !
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/movie" element={<MoviePage/>}/>
                 <Route path="/detail" element={<DetailPage/>}/>
                 <Route path="/theater" element={<TheaterPage/>}/>
+                <Route path="/theater/seat" element={<SeatChoicePage/>}/>
                 <Route path="/my" element={<MyPage/>}/>
             </Routes>
         </Router>

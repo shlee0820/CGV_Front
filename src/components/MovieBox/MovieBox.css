@@ -1,29 +1,39 @@
 .movie-box {
-    background-color: #ffd4dd;
+    /* background-color: #ffd4dd; */
     width: 30%;
     height: 400px;
     margin: 1.5%;
     padding-bottom: 15px;
-    text-align: center;
 }
 
 #no-box {
     background-color: #FB4357;
-    margin: 3px;
+    margin: 3px 0px;
     color: white;
     font-weight: bolder;
     padding: 3px;
+    text-align: center;
 }
 
 #movie-img {
-    width: 90%;
+    width: 100%;
     height: 65%;
     margin: 0 auto;
 }
 
 .movie-box .text {
-    font-size: 0.8em;
+    font-size: 0.7em;
     text-align: left;
-    margin-left: 15px;
-    padding: 5px;
+    padding-top: 3px;
+}
+
+#ticket-btn {
+    background-color: #FB4357;
+    border: 0px;
+    border-radius: 3px;
+    width: 97px;
+    height: 25px;
+    color: white;
+    font-weight: bold;
+    margin: 10px 0px;
 }
