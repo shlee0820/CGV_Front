@@ -7,13 +7,16 @@ import event1 from './EventImg/event1.jpg'
 import event2 from './EventImg/event2.jpg'
 import event3 from './EventImg/event3.jpg'
 import event4 from './EventImg/event4.jpg'
+import axios from 'axios';
 
 
 function MainPage() {
     const [movieViewNum, setMovieViewNum] = useState(1);
-    const [movie1id, movie2id, movie3id, movie4id, movie5id, movie6id, movie7id, movie8id] = [1, 2, 3, 4, 5, 6, 7, 8];
+    const movieId = [1, 2, 3, 4, 5, 6, 7, 8];
     const [eventViewNum, setEventViewNum] = useState(1);
     const [event1id, event2id, event3id, event4id] = [1, 2, 3, 4];
+    const [movieData, setMovieData] = useState([]);
+    const [movieCount, setMovieCount] = useState(0);
 
     function onMovieLeftClick() {
         if(movieViewNum > 1){
@@ -67,11 +70,59 @@ function MainPage() {
         }, 3000)
     }, [eventViewNum]);
 
+    const getMovie = () => {
+         // 영화 데이터 받아오기
+         axios.get("/movie")
+         .then(res => res.data.movies)
+         .then(res => {
+             setMovieData([...res]);
+             setMovieCount(res.length);
+         }); 
+    }
+
+    const userTest = () => {
+        // 유저인지 아닌지 판단
+        axios.get("/get_login_id")
+        .then(res => res.data)
+        .then(res => {
+            console.log(res);
+            if (res.islogin) {
+                // 로그인 상태 
+
+            } else {
+                //로그인 상태 아님
+
+            }
+        })
+    }
+
+    useEffect(()=> {
+        getMovie();
+        userTest();
+    }, []);
+
+    const makeMovieBox = (arr) => {
+        const result = [];
+        for (let i = 0; i < movieCount; i++) {
+            result.push(
+                <div className={(movieViewNum <= movieId[i] && movieId[i] <=  movieViewNum+3) 
+                    ? "default-movie-view" : "default-movie-none"} 
+                    id={movieId[i]}>
+                        <MainMovieBox no={i+1} id={arr[i]._id} 
+                        name={arr[i].contents.name} 
+                        poster={arr[i].contents.poster} 
+                        release={arr[i].contents.release}/>
+                </div>
+            )
+        }
+        return result;
+    } 
+
+
     return (
         <div>
             <Header/>
             <Navbar/>
-
             <div className='main-movie-list'>
                 <section className='main-movie-container'>
                     <i className="left-btn" onClick={onMovieLeftClick}>
@@ -79,14 +130,7 @@ function MainPage() {
                     </i>
                     <section id='main-movie-box'>
                         {/* 화면 줄어들 때 영화 박스가 페이지 너비에 따라 같이 줄어들게 만들기 */}
-                        <div className={(movieViewNum <= movie1id && movie1id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie1id}><MainMovieBox no='1'/></div>
-                        <div className={(movieViewNum <= movie2id && movie2id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie2id}><MainMovieBox no="2"/></div>
-                        <div className={(movieViewNum <= movie3id && movie3id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie3id}><MainMovieBox no="3"/></div>
-                        <div className={(movieViewNum <= movie4id && movie4id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie4id}><MainMovieBox no="4"/></div>
-                        <div className={(movieViewNum <= movie5id && movie5id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie5id}><MainMovieBox no="5"/></div>
-                        <div className={(movieViewNum <= movie6id && movie6id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie6id}><MainMovieBox no="6"/></div>
-                        <div className={(movieViewNum <= movie7id && movie7id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie7id}><MainMovieBox no="7"/></div>
-                        <div className={(movieViewNum <= movie8id && movie8id <=  movieViewNum+3) ? "default-movie-view" : "default-movie-none"} id={movie8id}><MainMovieBox no="8"/></div>
+                        {makeMovieBox(movieData)}
                     </section>
                     <i className="right-btn" onClick={onMovieRightClick}>
                         ⇨

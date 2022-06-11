@@ -2,7 +2,7 @@
     width : 70%;
     margin: 30px auto;
     display: flex;
-    min-width: 400px;
+    min-width: 100px;
 }
 
 .header-box .btn-group-box {

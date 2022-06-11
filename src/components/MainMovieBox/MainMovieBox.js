@@ -8,11 +8,13 @@ const MovieBox = (props) => {
 
     return (
         <div className='main-movie-box'>
-            <div id='main-no-box'>No.{props.no}</div>
-            <div id='main-movie-img'>영화 이미지</div>
-            <div className='main-text'>영화 제목</div>
-            <div className='main-text'>평점/예매율</div>
-            <div className='main-text'>예매 버튼</div>
+            <img id='main-movie-img' 
+            src={props.poster} 
+            alt='이미지 없음'
+            name={props.id}
+            />
+            <strong>{props.name}</strong>
+            <div className='main-text'>예매율 00% </div>
         </div>
     );
 };
