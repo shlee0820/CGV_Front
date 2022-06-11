@@ -3,6 +3,10 @@
     margin: 0 auto;
 }
 
+.movie-container > hr, .movie-container > section {
+    min-width: 650px;
+}
+
 .movie-container #movie-big-box {
     /* background-color: #ffd4dd; */
     display: flex;

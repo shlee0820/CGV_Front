@@ -8,17 +8,34 @@ const Movie = () => {
     const [movieCount, setMovieCount] = useState(0);
     const [movieInfo, setMovieInfo] = useState([]);
 
-    // get으로 영화 전체 받아오기
-    useEffect(() => {
-        axios.get("/movie")
+    const getMovie = (option) => {
+        let getData;
+        if (option === "grade"){
+            getData = axios.get("/movie?isGrade=1");  
+        }
+        else if (option === "advanceRate"){
+            getData = axios.get("/movie?isGrade=0");
+        }
+
+        getData
         .then(res => res.data.movies)
         .then(res => {
             setMovieCount(res.length);
             setMovieInfo([...res]);
         });
+    }
+
+    // get으로 영화 전체 받아오기
+    useEffect(() => {
+        getMovie("advanceRate");
     }, []);
 
-    function makeMovieBox(arr) {
+    const onChangeOrder = (e) => {
+        console.log(e.currentTarget.value);
+        getMovie(e.currentTarget.value);
+    }
+
+    const makeMovieBox = (arr) => {
         const movieArr = [];
         for (let i=0; i<movieCount; i++) {
             movieArr.push(
@@ -38,9 +55,9 @@ const Movie = () => {
             <h3>무비차트</h3>
             <hr/>
             <section style={{textAlign: "right"}}>
-                <select id='select-box'>
-                    <option defaultValue>예매율순</option>
-                    <option >평점순</option>
+                <select id='select-box' onChange={onChangeOrder}>
+                    <option value="advanceRate" defaultValue>예매율순</option>
+                    <option value="grade">평점순</option>
                 </select>
             </section>
             <section id='movie-big-box'>
