@@ -19,10 +19,9 @@ const Movie = () => {
     }, []);
 
     function makeMovieBox(arr) {
-        const MovieBoxArr = [];
-        console.log(arr);
+        const movieArr = [];
         for (let i=0; i<movieCount; i++) {
-            MovieBoxArr.push(
+            movieArr.push(
                 <MovieBox 
                 no={i+1} 
                 id={arr[i]._id}
@@ -31,9 +30,7 @@ const Movie = () => {
                 release={arr[i].contents.release}
                 />)
         }
-        console.log(MovieBoxArr);
-        //console.log(movieInfo[0].contents.name);
-        return MovieBoxArr;
+        return movieArr;
     }
 
     return (
@@ -47,7 +44,6 @@ const Movie = () => {
                 </select>
             </section>
             <section id='movie-big-box'>
-                {/* map 함수 써서 영화 개수만큼 돌리기, 인자는 영화 하나의 정보 */}
                 {makeMovieBox(movieInfo)}
             </section>
         </section>

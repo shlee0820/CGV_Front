@@ -11,6 +11,12 @@ const MyPage = () => {
     // 추후 통신으로 받아올 값
     // : 사용자 이름, 아이디, 예매 내역, 취소 내역
     useEffect(() => {
+        axios.get("/get_login_id")
+        .then(res => {
+            if( res.islogin) {
+                
+            }
+        })
         axios.get("/user/mypage")
         .then(console.log);
     }, []);
