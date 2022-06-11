@@ -1,10 +1,15 @@
+.center {
+    width: 70%;
+    min-width: 700px;
+    margin: 0 auto 50px;
+}
+
 #detail-top-box {
     display: flex;
-    width: 70%;
+    flex-wrap: wrap;
     height: 300px;
     justify-content: center;
     align-items: center;
-    margin: 50px auto;
 }
 
 .detail-btn {
@@ -36,9 +41,7 @@
 }
 
 #detail-review {
-    width: 70%;
     height: 130px;
-    margin: 0 auto 50px;
     background-color: #F6F6F6;
     display: flex;
     align-items: center;
@@ -52,4 +55,10 @@
 #review-btn-box {
     margin: 0 5%;
     width: 30%;
+}
+
+@media (max-width : 920px) {
+    #detail-top-box, #detail-review, #detail-review-write {
+        margin-left: 80px;
+    }
 }

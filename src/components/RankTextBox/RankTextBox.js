@@ -1,11 +1,11 @@
 import React from 'react';
 import './RankTextBox.css';
 
-const RankTextBox = () => {
+const RankTextBox = (props) => {
     return (
         <section id='review-box-each'>
-            <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tnghk23432</h5>
-            <div>자레드 레토 흡혈귀 잘 어울린다..</div>
+            <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{props.name}</h5>
+            <div>{props.comment}</div>
         </section>
     );
 };

@@ -15,32 +15,41 @@ const DetailPage = () => {
 
     useEffect(()=>{
         let { id } = location.state;
+
         axios.get(`/movie/detail-view?movie_id=${id}`)
         .then(res => res.data)
         .then(res => {
-            res = res.movie.contents;
-            setMovieInfo({"name": res.name, 
-            "poster": res.poster,
-            "director" : res.director, 
-            "actor" : res.actor, 
-            "genre" : res.genre, 
-            "release" : res.release
+            let movie = res.movie.contents;
+            setMovieInfo({"name": movie.name, 
+            "poster": movie.poster,
+            "director" : movie.director, 
+            "actor" : movie.actor, 
+            "genre" : movie.genre, 
+            "release" : movie.release,
+            "movie_id" : res.movie._id,
+            "avgPoint" : res.movie.scores.avgPoint
             });
         })
     }, [])
 
 
     // 평점 작성 누르면 등록 기능 로직
-    const [isUser, setIsUser] = useState(true); // 일단 true로
+    const [isUser, setIsUser] = useState(undefined); 
+    const [userId, setUserId] = useState("");
 
     const onClick = () => {
-
-        // 1. 회원인지 확인 -> 회원 아니면 이용 못함
-        // setIsUser(false);
-        // 2. 회원이면 평점 작성 진행
-        // setIsUser(true);
-
-        // useEffect로 isUser 바뀔때 마다 렌더링
+        axios.get("/get_login_id")
+        .then(res => res.data)
+        .then(res => {
+            console.log(res);
+            if (res.islogin) {
+                setIsUser(true);
+                setUserId(res.member[0]._id);
+            } else {
+                setIsUser(false);
+                alert("로그인 후 사용할 수 있는 기능입니다.");
+            }
+        })
     }
 
     return (
@@ -48,14 +57,14 @@ const DetailPage = () => {
             <Header/>
             <Navbar/>
             {/* 영화 상세 파트 */}
-            <section id='detail-top-box'>
-                <article style={{width: "30%"}}>
+            <section className='center' id='detail-top-box'>
+                <article style={{width: "30%", height: "280px"}}>
                     <img src={movieInfo.poster} alt='이미지 없음'
-                    style={{width: "90%"}} />
+                    style={{width: "90%", height: "100%"}} />
                 </article>
                 <article style={{width: "70%"}}>
                     <h3>{movieInfo.name}</h3>
-                    <div>예매율 : 00%</div><hr/>
+                    <div>예매율 : 00% &nbsp;&nbsp; 평점 : {movieInfo.avgPoint}점</div><hr/>
                     <div>감독 : {movieInfo.director} / 배우 : {movieInfo.actor}</div>
                     <div>장르 : {movieInfo.genre} / 기타 정보</div>
                     <div>개봉 : {movieInfo.release}</div>
@@ -63,7 +72,7 @@ const DetailPage = () => {
                 </article>
             </section>
             {/* 평점 작성 누르는 파트 */}
-            <section id='detail-review'>
+            <section className='center' id='detail-review'>
                 <div id='review-text-box'>
                     <div style={{fontSize: "1.0rem"}}>관람일 포함 7일 이내 관람평을 남기시면 <span style={{color: "#FB4357"}}>CJ ONE 20P</span>가 적립됩니다.</div>
                     <span style={{fontSize: "0.8em"}}>00명의 실관람객이 평가해주셨습니다.</span>
@@ -74,13 +83,12 @@ const DetailPage = () => {
                 </div>
             </section>
             {/* 평점 작성 파트 */}
-            <section>
+            <section className='center' id='detail-review-write'>
                 {
                     isUser ?
-                        <RankInput/>
-                    :<div>
-                        나는 유저 아님
-                    </div>
+                        <RankInput userId={userId} movieId={movieInfo.movie_id}/>
+                    :
+                    null
                 }
             </section>
         </section>
