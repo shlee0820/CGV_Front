@@ -9,3 +9,11 @@
 #review-box-each > div {
     margin-left: 20px;
 }
+
+#review-box-each > span {
+    display: block;
+    text-align: right;
+    margin-right: 15px;
+    font-size: 0.8em;
+    color: gray;
+}

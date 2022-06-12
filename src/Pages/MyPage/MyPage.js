@@ -1,25 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './MyPage.css';
 
 import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/Navbar';
 
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const MyPage = () => {
+
+    const navigate = useNavigate();
+    const [userId, setUserId] = useState("");
+    const [userInfo, setUserInfo] = useState({});
 
     // 추후 통신으로 받아올 값
     // : 사용자 이름, 아이디, 예매 내역, 취소 내역
     useEffect(() => {
         axios.get("/get_login_id")
         .then(res => {
-            if( res.islogin) {
-                
+            if(!res.data.islogin) {
+                alert('아직 로그인을 하지 않았습니다.');
+                navigate(-1);
+            } else {
+                setUserId(res.data.member[0]._id);
             }
         })
-        axios.get("/user/mypage")
-        .then(console.log);
     }, []);
+
+    useEffect(() => {
+        axios.get(`/user/mypage?member_id=${userId}`)
+        .then(res => {
+            let temp = res.data.member[0];
+            setUserInfo({...temp});
+        })
+    }, [userId]);
 
     return (
         <section>
@@ -27,8 +41,8 @@ const MyPage = () => {
             <Navbar/>
             <article id='my-container'>
                 <div id='my-box'>
-                    <h2>이수화님&nbsp;&nbsp;&nbsp;</h2>
-                    <span>tnghk123123</span>
+                    <h2>{userInfo.name}&nbsp;님&nbsp;&nbsp;&nbsp;</h2>
+                    <span>{userInfo.id}</span>
                     <hr/>
                     <h4>고객님은 <u>일반</u> 입니다.</h4>
                 </div>

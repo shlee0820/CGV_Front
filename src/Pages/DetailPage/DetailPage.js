@@ -36,6 +36,7 @@ const DetailPage = () => {
     // 평점 작성 누르면 등록 기능 로직
     const [isUser, setIsUser] = useState(undefined); 
     const [userId, setUserId] = useState("");
+    const [userName, setUserName] = useState("");
 
     const onClick = () => {
         axios.get("/get_login_id")
@@ -45,6 +46,8 @@ const DetailPage = () => {
             if (res.islogin) {
                 setIsUser(true);
                 setUserId(res.member[0]._id);
+                setUserName(res.member[0].name);
+
             } else {
                 setIsUser(false);
                 alert("로그인 후 사용할 수 있는 기능입니다.");
@@ -86,7 +89,7 @@ const DetailPage = () => {
             <section className='center' id='detail-review-write'>
                 {
                     isUser ?
-                        <RankInput userId={userId} movieId={movieInfo.movie_id}/>
+                        <RankInput userName={userName} userId={userId} movieId={movieInfo.movie_id}/>
                     :
                     null
                 }
