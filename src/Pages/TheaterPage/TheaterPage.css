@@ -55,4 +55,10 @@
     height: 60px;
     text-align: center;
     border: 1px solid black;
+    color: black;
+    text-decoration-line: none;
+}
+
+.movieLink {
+    text-decoration-line: none;
 }
