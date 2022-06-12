@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Header from '../../components/Header/Header'
 import Navbar from '../../components/Navbar/Navbar'
 import './TheaterPage.css';
+import {Link} from 'react-router-dom';
 
 function TheaterPage() {
     return (
@@ -23,14 +24,18 @@ function TheaterPage() {
                                     1층&nbsp;&nbsp;|&nbsp;&nbsp;총 100석</span>
                             </div>
                             <div className='starttimebtn'>
-                                <div className='am'>
-                                    <p>11:00</p>
-                                    <p>여석</p>
-                                </div>
-                                <div className='pm'>
-                                    <p>18:00</p>
-                                    <p>여석</p>
-                                </div>
+                                <Link className="movieLink" to='/theater/choiceMovieA'>
+                                    <div className='am'>
+                                        <p>11:00</p>
+                                        <p>여석</p>
+                                    </div>
+                                </Link>
+                                <Link className="movieLink" to='/theater/choiceMovieA'>
+                                    <div className='am'>
+                                        <p>18:00</p>
+                                        <p>여석</p>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -49,14 +54,18 @@ function TheaterPage() {
                                     2층&nbsp;&nbsp;|&nbsp;&nbsp;총 100석</span>
                             </div>
                             <div className='starttimebtn'>
-                                <div className='am'>
-                                    <p>11:00</p>
-                                    <p>여석</p>
-                                </div>
-                                <div className='pm'>
-                                    <p>18:00</p>
-                                    <p>여석</p>
-                                </div>
+                                <Link className="movieLink" to='/theater/choiceMovieB'>
+                                    <div className='am'>
+                                        <p>11:00</p>
+                                        <p>여석</p>
+                                    </div>
+                                </Link>
+                                <Link className="movieLink" to='/theater/choiceMovieB'>
+                                    <div className='am'>
+                                        <p>18:00</p>
+                                        <p>여석</p>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
