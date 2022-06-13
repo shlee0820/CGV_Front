@@ -8,18 +8,27 @@ import event2 from './EventImg/event2.jpg'
 import event3 from './EventImg/event3.jpg'
 import event4 from './EventImg/event4.jpg'
 import axios from 'axios';
-
+import JoinHeader from '../../components/JoinHeader/JoinHeader';
 
 function MainPage() {
     const [movieViewNum, setMovieViewNum] = useState(1);
-    const movieId = [1, 2, 3, 4, 5, 6, 7, 8];
+    const movieId = [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+    ];
     const [eventViewNum, setEventViewNum] = useState(1);
     const [event1id, event2id, event3id, event4id] = [1, 2, 3, 4];
     const [movieData, setMovieData] = useState([]);
     const [movieCount, setMovieCount] = useState(0);
 
     function onMovieLeftClick() {
-        if(movieViewNum > 1){
+        if (movieViewNum > 1) {
             setMovieViewNum(movieViewNum - 1);
         } else {
             setMovieViewNum(movieViewNum);
@@ -27,7 +36,7 @@ function MainPage() {
     }
 
     function onMovieRightClick() {
-        if(movieViewNum < 5) {
+        if (movieViewNum < 5) {
             setMovieViewNum(movieViewNum + 1);
         } else {
             setMovieViewNum(movieViewNum);
@@ -35,7 +44,7 @@ function MainPage() {
     }
 
     function onEventLeftClick() {
-        if(eventViewNum > 1){
+        if (eventViewNum > 1) {
             setEventViewNum(eventViewNum - 1);
         } else {
             setEventViewNum(eventViewNum);
@@ -43,7 +52,7 @@ function MainPage() {
     }
 
     function onEventRightClick() {
-        if(eventViewNum < 2) {
+        if (eventViewNum < 2) {
             setEventViewNum(eventViewNum + 1);
         } else {
             setEventViewNum(eventViewNum);
@@ -51,7 +60,7 @@ function MainPage() {
     }
 
     useEffect(() => {
-            setTimeout(() => {
+        setTimeout(() => {
             if (eventViewNum > 1) {
                 setEventViewNum(eventViewNum - 1);
             } else if (eventViewNum < 2) {
@@ -61,7 +70,7 @@ function MainPage() {
     }, []);
 
     useEffect(() => {
-            setTimeout(() => {
+        setTimeout(() => {
             if (eventViewNum > 1) {
                 setEventViewNum(eventViewNum - 1);
             } else if (eventViewNum < 2) {
@@ -71,32 +80,34 @@ function MainPage() {
     }, [eventViewNum]);
 
     const getMovie = () => {
-         // 영화 데이터 받아오기
-         axios.get("/movie")
-         .then(res => res.data.movies)
-         .then(res => {
-             setMovieData([...res]);
-             setMovieCount(res.length);
-         }); 
+        // 영화 데이터 받아오기
+        axios
+            .get("/movie")
+            .then(res => res.data.movies)
+            .then(res => {
+                setMovieData([...res]);
+                setMovieCount(res.length);
+            });
     }
 
+    const [loginStatus, setLoginStatus] = useState(false);
     const userTest = () => {
         // 유저인지 아닌지 판단
-        axios.get("/get_login_id")
-        .then(res => res.data)
-        .then(res => {
-            console.log(res);
-            if (res.islogin) {
-                // 로그인 상태 
+        axios
+            .get("/get_login_id")
+            .then(res => res.data)
+            .then(res => {
+                console.log(res);
+                if (res.islogin) {
+                    setLoginStatus(true);
 
-            } else {
-                //로그인 상태 아님
-
-            }
-        })
+                } else {
+                    setLoginStatus(false);
+                }
+            })
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         getMovie();
         userTest();
     }, []);
@@ -105,23 +116,31 @@ function MainPage() {
         const result = [];
         for (let i = 0; i < movieCount; i++) {
             result.push(
-                <div className={(movieViewNum <= movieId[i] && movieId[i] <=  movieViewNum+3) 
-                    ? "default-movie-view" : "default-movie-none"} 
+                <div
+                    className={(
+                        movieViewNum <= movieId[i] && movieId[i] <= movieViewNum + 3)
+                        ? "default-movie-view"
+                        : "default-movie-none"}
                     id={movieId[i]}>
-                        <MainMovieBox no={i+1} id={arr[i]._id} 
-                        name={arr[i].contents.name} 
-                        poster={arr[i].contents.poster} 
+                    <MainMovieBox
+                        no={i + 1}
+                        id={arr[i]._id}
+                        name={arr[i].contents.name}
+                        poster={arr[i].contents.poster}
                         release={arr[i].contents.release}/>
                 </div>
             )
         }
         return result;
-    } 
-
+    }
 
     return (
         <div>
-            <Header/>
+            {
+                loginStatus
+                    ? <JoinHeader/>
+                    : <Header/>
+            }
             <Navbar/>
             <div className='main-movie-list'>
                 <section className='main-movie-container'>
@@ -145,30 +164,58 @@ function MainPage() {
                         ⇦
                     </i>
                     <section id='main-event-box'>
-                        <div className={(eventViewNum <= event1id && event1id <=  eventViewNum+2) ? "default-event-view" : "default-event-none"} id={event1id}>
+                        <div
+                            className={(
+                                eventViewNum <= event1id && event1id <= eventViewNum + 2)
+                                ? "default-event-view"
+                                : "default-event-none"}
+                            id={event1id}>
                             <div className='event'>
-                                <div className="event-img-scale"><img className='eventImg' src={event1}></img></div>
+                                <div className="event-img-scale">
+                                    <img className='eventImg' src={event1}></img>
+                                </div>
                                 <p className="event-name">All-Dat 영스엑런칭 이벤트</p>
                                 <p className="event-period">2022.06.03 ~ 2022.07.22</p>
                             </div>
                         </div>
-                        <div className={(eventViewNum <= event2id && event2id <=  eventViewNum+2) ? "default-event-view" : "default-event-none"} id={event2id}>
+                        <div
+                            className={(
+                                eventViewNum <= event2id && event2id <= eventViewNum + 2)
+                                ? "default-event-view"
+                                : "default-event-none"}
+                            id={event2id}>
                             <div className='event'>
-                                <div className="event-img-scale"><img className='eventImg' src={event2}></img></div>
+                                <div className="event-img-scale">
+                                    <img className='eventImg' src={event2}></img>
+                                </div>
                                 <p className="event-name">[범죄도시2] 포토플레이 시크릿 컷</p>
                                 <p className="event-period">2022.05.10 ~ 2022.06.05</p>
                             </div>
                         </div>
-                        <div className={(eventViewNum <= event3id && event3id <=  eventViewNum+2) ? "default-event-view" : "default-event-none"} id={event3id}>
+                        <div
+                            className={(
+                                eventViewNum <= event3id && event3id <= eventViewNum + 2)
+                                ? "default-event-view"
+                                : "default-event-none"}
+                            id={event3id}>
                             <div className='event'>
-                                <div className="event-img-scale"><img className='eventImg' src={event3}></img></div>
+                                <div className="event-img-scale">
+                                    <img className='eventImg' src={event3}></img>
+                                </div>
                                 <p className="event-name">[브로커]CGV 필름마크</p>
                                 <p className="event-period">2022.06.02 ~ 2022.06.26</p>
                             </div>
                         </div>
-                        <div className={(eventViewNum <= event4id && event4id <=  eventViewNum+2) ? "default-event-view" : "default-event-none"} id={event4id}>
+                        <div
+                            className={(
+                                eventViewNum <= event4id && event4id <= eventViewNum + 2)
+                                ? "default-event-view"
+                                : "default-event-none"}
+                            id={event4id}>
                             <div className='event'>
-                                <div className="event-img-scale"><img className='eventImg' src={event4}></img></div>
+                                <div className="event-img-scale">
+                                    <img className='eventImg' src={event4}></img>
+                                </div>
                                 <p className="event-name">[쥬라기 월드: 도미니언]CGV 필름마크</p>
                                 <p className="event-period">2022.05.25 ~ 2022.06.19</p>
                             </div>
@@ -183,6 +230,5 @@ function MainPage() {
         </div>
     );
 };
-
 
 export default MainPage;

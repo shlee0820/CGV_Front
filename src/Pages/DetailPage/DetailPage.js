@@ -6,6 +6,7 @@ import RankInput from '../../components/RankInput/RankInput';
 
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import JoinHeader from '../../components/JoinHeader/JoinHeader';
 
 const DetailPage = () => {
 
@@ -52,9 +53,34 @@ const DetailPage = () => {
         })
     }
 
+    const [loginStatus, setLoginStatus] = useState(false);
+    const userTest = () => {
+        // 유저인지 아닌지 판단
+        axios
+            .get("/get_login_id")
+            .then(res => res.data)
+            .then(res => {
+                console.log(res);
+                if (res.islogin === true) {
+                    setLoginStatus(true);
+
+                } else {
+                    setLoginStatus(false);
+                }
+            })
+    }
+
+    useEffect(() => {
+        userTest();
+    }, []);
+
     return (
         <section>
-            <Header/>
+            {
+                loginStatus
+                    ? <JoinHeader/>
+                    : <Header/>
+            }
             <Navbar/>
             {/* 영화 상세 파트 */}
             <section className='center' id='detail-top-box'>

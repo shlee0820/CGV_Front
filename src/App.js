@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import './App.css';
 // import react-router-dom
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
@@ -15,6 +16,9 @@ import MyPage from './pages/MyPage/MyPage';
 import TheaterChoiceA from './pages/TheaterChoiceA/TheaterChoiceA';
 import TheaterChoiceB from './pages/TheaterChoiceB/TheaterChoiceB';
 
+import Header from './components/Header/Header';
+import JoinHeader from './components/JoinHeader/JoinHeader';
+
 // 페이지 추가할때마다 route태그 추가하기 !
 function App() {
     return (
@@ -28,8 +32,7 @@ function App() {
                 <Route path="/theater" element={<TheaterPage/>}/>
                 <Route path="/theater/seat" element={<SeatChoicePage/>}/>
                 <Route path="/my" element={<MyPage/>}/>
-                <Route path="/theater/choiceMovieA" element={<TheaterChoiceA />}/>
-                <Route path="/theater/choiceMovieB" element={<TheaterChoiceB />}/>
+                <Route path="/theater/choiceMovieA" element={<TheaterChoiceA />}/> {/* <Route path="/theater/choiceMovieB" element={<TheaterChoiceB />}/> */}
             </Routes>
         </Router>
     );
