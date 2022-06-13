@@ -1,19 +1,11 @@
-<<<<<<< HEAD
-import React, {useState, useEffect} from 'react';
-=======
 import React, { useEffect, useState } from 'react';
->>>>>>> 5a35a8e82ba5315bd604bc5f9a6b961162a2bd8a
 import './MyPage.css';
 
 import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/Navbar';
 
 import axios from 'axios';
-<<<<<<< HEAD
-import JoinHeader from '../../components/JoinHeader/JoinHeader';
-=======
 import { useNavigate } from 'react-router-dom';
->>>>>>> 5a35a8e82ba5315bd604bc5f9a6b961162a2bd8a
 
 const MyPage = () => {
 
@@ -35,28 +27,6 @@ const MyPage = () => {
         })
     }, []);
 
-<<<<<<< HEAD
-    const [loginStatus, setLoginStatus] = useState(false);
-    const userTest = () => {
-        // 유저인지 아닌지 판단
-        axios
-            .get("/get_login_id")
-            .then(res => res.data)
-            .then(res => {
-                console.log(res);
-                if (res.islogin === true) {
-                    setLoginStatus(true);
-
-                } else {
-                    setLoginStatus(false);
-                }
-            })
-    }
-
-    useEffect(() => {
-        userTest();
-    }, []);
-=======
     useEffect(() => {
         axios.get(`/user/mypage?member_id=${userId}`)
         .then(res => {
@@ -64,15 +34,10 @@ const MyPage = () => {
             setUserInfo({...temp});
         })
     }, [userId]);
->>>>>>> 5a35a8e82ba5315bd604bc5f9a6b961162a2bd8a
 
     return (
         <section>
-            {
-                loginStatus
-                    ? <JoinHeader/>
-                    : <Header/>
-            }
+            <Header/>
             <Navbar/>
             <article id='my-container'>
                 <div id='my-box'>

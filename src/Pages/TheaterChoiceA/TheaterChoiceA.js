@@ -13,7 +13,7 @@ function TheaterChoiceA() {
 
     function timeclick(event) {
         setChoice(event.target.id);
-        
+
     }
 
     const [loginStatus, setLoginStatus] = useState(false);
@@ -74,13 +74,23 @@ function TheaterChoiceA() {
                             </div>
                             <div className='timetable'>
                                 <div className='amTime'>
-                                    <span className={(amTimeMovie == choice) ? 'selectedtext' : 'timetext'} onClick={timeclick}
+                                    <span
+                                        className={(
+                                            amTimeMovie == choice)
+                                            ? 'selectedtext'
+                                            : 'timetext'}
+                                        onClick={timeclick}
                                         id={amTimeMovie}>11:00
                                     </span>
                                     <span className='seattext'>여석</span>
                                 </div>
                                 <div className='pmTime'>
-                                    <span className={(pmTimeMovie == choice) ? 'selectedtext' : 'timetext'} onClick={timeclick}
+                                    <span
+                                        className={(
+                                            pmTimeMovie == choice)
+                                            ? 'selectedtext'
+                                            : 'timetext'}
+                                        onClick={timeclick}
                                         id={pmTimeMovie}>18:00
                                     </span>
                                     <span className='seattext'>여석</span>
@@ -94,17 +104,49 @@ function TheaterChoiceA() {
             <div className='bottomBigBox'>
                 <div className='bottomBox'>
                     <div className='bottomleft'>
-                        <div className='poster'></div>
-                        <div className='bottominfo'></div>
+                        <div className='poster'>
+                            <p>이미지</p>
+                            <div className='posterinfo'>
+                                <p>제목</p>
+                                <p>2D</p>
+                                <p>(상영 등급)관람가</p>
+                            </div>
+                        </div>
+                        <div className='bottominfo'>
+                            <p>
+                                <span className='light'>극장&nbsp;&nbsp;&nbsp;</span>
+                                <span className='bold'>CGV 구미 &gt;</span>
+                            </p>
+                            <p>
+                                <span className='light'>일시&nbsp;&nbsp;&nbsp;</span>
+                                <span className='bold'>2022.6.15(수) (영화 시간 받아오기)</span>
+                            </p>
+                            <p>
+                                <span className='light'>상영관&nbsp;&nbsp;&nbsp;</span>
+                                <span className='bold'>(상영관 정보)</span>
+                            </p>
+                            <p>
+                                <span className='light'>인원&nbsp;&nbsp;&nbsp;</span>
+                            </p>
+                        </div>
                         <div className='step'></div>
                     </div>
                     <div className='bottomright'>
-                        <Link to={(choice) ? '/theater/seatchoice' : '/theater/choiceMovieA'} className='bottombtn'>
-                            <div className={(choice) ? 'active_btn' : 'btn'}>
+                        <Link
+                            to={(
+                                choice)
+                                ? '/theater/seat'
+                                : '/theater/choiceMovieA'}
+                            className='bottombtn'>
+                            <div
+                                className={(
+                                    choice)
+                                    ? 'active_btn'
+                                    : 'btn'}>
                                 <p>➜</p>
                                 <p>좌석 선택</p>
                             </div>
-                        </Link> 
+                        </Link>
                     </div>
                 </div>
             </div>

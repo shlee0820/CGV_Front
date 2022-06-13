@@ -32,7 +32,8 @@ function App() {
                 <Route path="/theater" element={<TheaterPage/>}/>
                 <Route path="/theater/seat" element={<SeatChoicePage/>}/>
                 <Route path="/my" element={<MyPage/>}/>
-                <Route path="/theater/choiceMovieA" element={<TheaterChoiceA />}/> {/* <Route path="/theater/choiceMovieB" element={<TheaterChoiceB />}/> */}
+                <Route path="/theater/choiceMovieA" element={<TheaterChoiceA />}/> 
+                <Route path="/theater/choiceMovieB" element={<TheaterChoiceB />}/>
             </Routes>
         </Router>
     );
