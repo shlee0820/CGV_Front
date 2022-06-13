@@ -1,27 +1,41 @@
+<<<<<<< HEAD
 import React, {useState, useEffect} from 'react';
+=======
+import React, { useEffect, useState } from 'react';
+>>>>>>> 5a35a8e82ba5315bd604bc5f9a6b961162a2bd8a
 import './MyPage.css';
 
 import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/Navbar';
 
 import axios from 'axios';
+<<<<<<< HEAD
 import JoinHeader from '../../components/JoinHeader/JoinHeader';
+=======
+import { useNavigate } from 'react-router-dom';
+>>>>>>> 5a35a8e82ba5315bd604bc5f9a6b961162a2bd8a
 
 const MyPage = () => {
+
+    const navigate = useNavigate();
+    const [userId, setUserId] = useState("");
+    const [userInfo, setUserInfo] = useState({});
 
     // 추후 통신으로 받아올 값
     // : 사용자 이름, 아이디, 예매 내역, 취소 내역
     useEffect(() => {
         axios.get("/get_login_id")
         .then(res => {
-            if( res.islogin) {
-                
+            if(!res.data.islogin) {
+                alert('아직 로그인을 하지 않았습니다.');
+                navigate(-1);
+            } else {
+                setUserId(res.data.member[0]._id);
             }
         })
-        axios.get("/user/mypage")
-        .then(console.log);
     }, []);
 
+<<<<<<< HEAD
     const [loginStatus, setLoginStatus] = useState(false);
     const userTest = () => {
         // 유저인지 아닌지 판단
@@ -42,6 +56,15 @@ const MyPage = () => {
     useEffect(() => {
         userTest();
     }, []);
+=======
+    useEffect(() => {
+        axios.get(`/user/mypage?member_id=${userId}`)
+        .then(res => {
+            let temp = res.data.member[0];
+            setUserInfo({...temp});
+        })
+    }, [userId]);
+>>>>>>> 5a35a8e82ba5315bd604bc5f9a6b961162a2bd8a
 
     return (
         <section>
@@ -53,8 +76,8 @@ const MyPage = () => {
             <Navbar/>
             <article id='my-container'>
                 <div id='my-box'>
-                    <h2>이수화님&nbsp;&nbsp;&nbsp;</h2>
-                    <span>tnghk123123</span>
+                    <h2>{userInfo.name}&nbsp;님&nbsp;&nbsp;&nbsp;</h2>
+                    <span>{userInfo.id}</span>
                     <hr/>
                     <h4>고객님은 <u>일반</u> 입니다.</h4>
                 </div>
