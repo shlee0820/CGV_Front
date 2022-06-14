@@ -8,6 +8,8 @@ import JoinHeader from '../../components/JoinHeader/JoinHeader';
 
 function TheaterPage() {
     const [loginStatus, setLoginStatus] = useState(false);
+    const [movieIdData, setMovieIdData] = useState([]);
+
     const userTest = () => {
         // 유저인지 아닌지 판단
         axios
@@ -24,8 +26,15 @@ function TheaterPage() {
             })
     }
 
+    function getMovieData() {
+        axios.get('/theater').then(res => res.data).then(res => res.theater).then((res) => {
+            console.log(res[0]);
+        })
+    }
+
     useEffect(() => {
         userTest();
+        getMovieData()
     }, []);
     return (
         <div>

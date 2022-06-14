@@ -10,9 +10,20 @@ import JoinHeader from '../../components/JoinHeader/JoinHeader';
 function TheaterChoiceB() {
     const [amTimeBMovie, pmTimeBMovie] = [1, 2];
     const [Bchoice, setBChoice] = useState(false);
+    const [movieBname, setMovieBName] = useState();
+    const [movieBPoster, setMovieBPoster] = useState();
+
+    const [movieBShowData, setMovieBShowData] = useState('');
 
     function timeclick(event) {
         setBChoice(event.target.id);
+        if (Bchoice == amTimeBMovie) {
+            setMovieBShowData('62a5cc651a58e38fbe6f8b2b '); 
+        } else {
+            setMovieBShowData('62a5ccbb1a58e38fbe6f8b2d ');
+        }
+        // 만약 오전 11시 영화를 선택했다면 movieAShowData에 오전 11시 범죄도시2 영화의 정보가 들어가고
+        // 18시 영화를 선택했다면 18시 범죄도시2 영화의 정보가 들어간다.
 
     }
 
@@ -33,8 +44,16 @@ function TheaterChoiceB() {
             })
     }
 
+    function BmovieData() {
+        axios.get('/movie').then(res => res.data.movies).then(res => res[3].contents).then(res => {
+            setMovieBName(res.name);
+            setMovieBPoster(res.poster);
+        });
+    }
+
     useEffect(() => {
         userTest();
+        BmovieData();
     }, []);
 
     return (
@@ -105,48 +124,53 @@ function TheaterChoiceB() {
                 <div className='bottomBox'>
                     <div className='bottomleft'>
                         <div className='poster'>
-                            <p>이미지</p>
+                            <img src={movieBPoster} className='postersize'></img>
                             <div className='posterinfo'>
-                                <p>제목</p>
+                                <p>{movieBname}</p>
                                 <p>2D</p>
-                                <p>(상영 등급)관람가</p>
+                                <p>15세 이상 관람가</p>
                             </div>
                         </div>
                         <div className='bottominfo'>
-                            <p>
+                            <div>
                                 <span className='light'>극장&nbsp;&nbsp;&nbsp;</span>
                                 <span className='bold'>CGV 구미 &gt;</span>
-                            </p>
-                            <p>
+                            </div>
+                            <div>
                                 <span className='light'>일시&nbsp;&nbsp;&nbsp;</span>
-                                <span className='bold'>2022.6.15(수) (영화 시간 받아오기)</span>
-                            </p>
-                            <p>
+                                <span className='bold'>2022.6.15(수)</span>
+                            </div>
+                            <div>
                                 <span className='light'>상영관&nbsp;&nbsp;&nbsp;</span>
-                                <span className='bold'>(상영관 정보)</span>
-                            </p>
-                            <p>
+                                <span className='bold'>2관 2층</span>
+                            </div>
+                            <div>
                                 <span className='light'>인원&nbsp;&nbsp;&nbsp;</span>
-                            </p>
+                            </div>
                         </div>
-                        <div className='step'></div>
+                        <div className='step'>
+                            <p className='steptext'>좌석선택 → 결제</p>
+                        </div>
                     </div>
                     <div className='bottomright'>
-                        <Link
-                            to={(
-                                Bchoice)
-                                ? '/theater/seat'
-                                : '/theater/choiceMovieA'}
-                            className='bottombtn'>
-                            <div
-                                className={(
-                                    Bchoice)
-                                    ? 'active_btn'
-                                    : 'btn'}>
-                                <p>➜</p>
-                                <p>좌석 선택</p>
-                            </div>
-                        </Link>
+                        <div className='rightbtn'>
+                            {/* <Link to={(Bchoice) ? '/theater/seat' : '/theater/choiceMovieB'} */}
+                            <Link to={{
+                                    pathname: (Bchoice) ? '/theater/seat' : '/theater/choiceMovieB',
+                                    state: { 
+                                        idData : {movieBShowData}
+                                    }
+                                }} className='bottombtn'>
+                                <div
+                                    className={(
+                                        Bchoice)
+                                        ? 'active_btn'
+                                        : 'btn'}>
+                                    <p>➜</p>
+                                    <p>좌석 선택</p>
+                                </div>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
