@@ -117,14 +117,16 @@
 
 .bottomBox {
     width: 70%;
+    height: 100%;
     margin: 10px auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .bottomleft {
-    width: 70%;
+    width: 50%;
     color: white;
     display: flex;
     flex-direction: row;
@@ -132,14 +134,34 @@
 
 .poster {
     display: flex;
+    justify-content: space-between;
+    width: 40%;
+}
+
+.posterinfo {
+    width: 60%;
+}
+
+.bottominfo{
+    width: 30%;
 }
 
 .bottomright{
     width: 30%;
 }
 
-.bottombtn{
-    text-decoration-line: none;
+.step{
+    width: 30%;
+    height: 100%;
+}
+
+.steptext {
+    font-size: 1.8rem;
+    color: #F8F8FF;
+    font-weight: bold;
+    opacity: 0.8;
+    height: 100%;
+    line-height: 100%;
 }
 
 .btn{
@@ -150,4 +172,15 @@
 .active_btn{
     color: white;
     background-color: red;
+}
+
+.rightbtn{
+    width: 50%;
+    height: 50%;
+    text-align: center;
+    text-decoration-line: none;
+}
+
+.postersize {
+    width: 30%;
 }
